@@ -1,11 +1,11 @@
 {
-  "name": "vite-webflow-env",
+  "name": "vite-webflow-dev",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/vite-webflow-env/",
+    "build": "vite build --base=/vite-webflow-dev/",
     "preview": "vite preview"
   },
   "devDependencies": {
