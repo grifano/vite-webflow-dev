@@ -1,11 +1,11 @@
 {
-  "name": "vanilla-app-template",
+  "name": "vite-webflow-env",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/ADD REPO NAME/",
+    "build": "vite build --base=/vite-webflow-env/",
     "preview": "vite preview"
   },
   "devDependencies": {
