@@ -12,13 +12,10 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: {
+          main: './src/main.js', // Main JS entry point
+        },
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              return 'vendor';
-            }
-          },
           // Define fixed naming patterns for the output files
           entryFileNames: 'assets/script.js',
           chunkFileNames: 'assets/script.js',
@@ -28,6 +25,8 @@ export default defineConfig(({ command }) => {
             }
             return 'assets/[name][extname]';
           },
+          // Ensure no code-splitting to avoid multiple script files
+          manualChunks: undefined,
         },
       },
       outDir: '../dist',
