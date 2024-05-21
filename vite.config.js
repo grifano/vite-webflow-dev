@@ -11,7 +11,6 @@ export default defineConfig(({ command }) => {
     root: 'src',
     build: {
       sourcemap: true,
-
       rollupOptions: {
         input: glob.sync('./src/*.html'),
         output: {
@@ -20,7 +19,14 @@ export default defineConfig(({ command }) => {
               return 'vendor';
             }
           },
-          entryFileNames: 'commonHelpers.js',
+          entryFileNames: 'assets/script.js', // Naming JS as script.js
+          chunkFileNames: 'assets/script.js',
+          assetFileNames({ name }) {
+            if (name && name.endsWith('.css')) {
+              return 'assets/styles.css'; // Naming CSS as styles.css
+            }
+            return 'assets/[name][extname]';
+          },
         },
       },
       outDir: '../dist',
