@@ -9,15 +9,17 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
-    base: '/vite-webflow-dev/', // Ensure this matches your repository name
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: {
-          main: './src/main.js', // Main JS entry point
-        },
+        input: glob.sync('./src/*.html'),
         output: {
-          entryFileNames: 'assets/script.js',
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
+          },
+          entryFileNames: 'assets/script.js', // Naming JS as script.js
           chunkFileNames: 'assets/script.js',
           assetFileNames({ name }) {
             if (name && name.endsWith('.css')) {
@@ -25,7 +27,6 @@ export default defineConfig(({ command }) => {
             }
             return 'assets/[name][extname]';
           },
-          manualChunks: undefined, // Ensure no manual chunking
         },
       },
       outDir: '../dist',
