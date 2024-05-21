@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
+    base: '/vite-webflow-dev/', // Ensure this matches your repository name
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -16,7 +17,6 @@ export default defineConfig(({ command }) => {
           main: './src/main.js', // Main JS entry point
         },
         output: {
-          // Define fixed naming patterns for the output files
           entryFileNames: 'assets/script.js',
           chunkFileNames: 'assets/script.js',
           assetFileNames({ name }) {
@@ -25,8 +25,7 @@ export default defineConfig(({ command }) => {
             }
             return 'assets/[name][extname]';
           },
-          // Ensure no code-splitting to avoid multiple script files
-          manualChunks: undefined,
+          manualChunks: undefined, // Ensure no manual chunking
         },
       },
       outDir: '../dist',
