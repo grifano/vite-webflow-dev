@@ -19,7 +19,8 @@ export default defineConfig(({ command }) => {
               return 'vendor';
             }
           },
-          entryFileNames: 'assets/script.js', // Naming JS as script.js
+          // Define fixed naming patterns for the output files
+          entryFileNames: 'assets/script.js',
           chunkFileNames: 'assets/script.js',
           assetFileNames({ name }) {
             if (name && name.endsWith('.css')) {

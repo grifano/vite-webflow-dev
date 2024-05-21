@@ -1,5 +1,6 @@
 // SplideJS
 import Splide from '@splidejs/splide';
+import '@splidejs/splide/css/core';
 
 var elms = document.getElementsByClassName('splide');
 

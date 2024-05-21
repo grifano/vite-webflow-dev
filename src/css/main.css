@@ -4,14 +4,8 @@
   | default @import url()
   |============================
 */
-body {
-  color: var(--bodytextdark);
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-}
 /*** Helpers ***/
 @import url('./helpers.css');
 
 /*** Libraries ***/
-@import '@splidejs/splide/css/core';
 @import url('./splide.css');
